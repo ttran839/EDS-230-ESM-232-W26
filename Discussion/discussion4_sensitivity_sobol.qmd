@@ -156,7 +156,7 @@ sens_almond_sobol2 <- sobolSalt(model = NULL, X1, X2, nboot = 100, scheme = "B")
 
 parms <- as.data.frame(sens_almond_sobol2$X)
 colnames(parms) <- colnames(X1)
-res <- pmap_dbl(parms, compute_almond_yield, clim=clim)
+res <- pmap_dbl(parms, compute_almond_yield2, clim=clim)
 
 
 sens_almond_sobol2 <- sensitivity::tell(sens_almond_sobol2, res, res.names = "yield")
@@ -172,4 +172,7 @@ sens_almond_sobol2$T
 # second order parameters interaction in controlling sensitivity
 # parameters are in order, interactiosn are small here
 sens_almond_sobol2$S2
+
+#print the whole object
+print(sens_almond_sobol2)
 ```
